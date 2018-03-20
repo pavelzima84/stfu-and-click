@@ -29,5 +29,5 @@ export default class TeamAddClickForm extends React.Component {
 }
 
 TeamAddClickForm.propTypes = {
-    click: PropTypes.func.isRequired
+  click: PropTypes.func.isRequired
 }

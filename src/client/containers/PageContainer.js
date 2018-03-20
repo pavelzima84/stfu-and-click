@@ -1,3 +1,5 @@
+/* eslint react/prop-types: 0 */
+
 import React from 'react'
 import { connect } from 'react-redux'
 
@@ -13,7 +15,7 @@ import Page from '../components/Page'
  * At first there is need to prepare session - this is a loading phase.
  * Just then the page is rendered.
  *
- * @prop {React.Component} children - <Main> part by the actual Route. 
+ * @prop {React.Component} children - <Main> part by the actual Route.
  */
 class PageContainer extends React.Component {
 
@@ -28,23 +30,19 @@ class PageContainer extends React.Component {
       return <Loading />
     }
 
-    {/* render the <main> by the actual Route */}
+    // render the <main> by the actual Route
     return <Page main={this.props.children} />
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    session: state.user.session
-  };
-}
+const mapStateToProps = (state, props) => ({
+  session: state.user.session
+})
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    initSession: () => {
-      dispatch(initSession())
-    }
+const mapDispatchToProps = (dispatch, props) => ({
+  initSession: () => {
+    dispatch(initSession())
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageContainer)

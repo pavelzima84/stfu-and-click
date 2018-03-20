@@ -1,8 +1,10 @@
+/* eslint react/prop-types: 0 */
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { asycFetchLeaderBoard, asycClick } from '../actions/team'
+import { asycFetchLeaderBoard } from '../actions/team'
 import LeaderBoardMain from '../components/LeaderBoardMain'
 
 /**
@@ -18,29 +20,28 @@ class LeaderBoardMainContainer extends React.Component {
       .then((teams) => {})
       .catch((reason) => {
         // TODO: is missing
-        debugger
+        // debugger
       })
   }
 
   render() {
-  return <LeaderBoardMain teams={this.props.items} click={(team) => this.props.click(this.props.session, team)} />
+    return <LeaderBoardMain
+      teams={this.props.items}
+      click={(team) => this.props.click(this.props.session, team)}
+    />
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    session: state.user.session,
-    ...state.teams
-  }
-}
+const mapStateToProps = (state, props) => ({
+  session: state.user.session,
+  ...state.teams
+})
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    loadLeaderBoard: () => asycFetchLeaderBoard(dispatch),
-    click: (session, team) => {
-      dispatch(push('/' + team))
-    }
+const mapDispatchToProps = (dispatch, props) => ({
+  loadLeaderBoard: () => asycFetchLeaderBoard(dispatch),
+  click: (session, team) => {
+    dispatch(push(`/${team}`))
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoardMainContainer)

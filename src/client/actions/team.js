@@ -1,4 +1,4 @@
-import {fetchLeaderBoard, sendClick} from '../utils/agent'
+import { fetchLeaderBoard, sendClick } from '../utils/agent'
 
 export function asycFetchLeaderBoard(dispatch) {
   return new Promise((resolve, reject) => {
@@ -34,26 +34,26 @@ export function asycClick(dispatch, userSession, team) {
 
 // fetching
 function leaderBoardFetchStart() {
-   return { type: 'LEADER_BOARD_FETCH_START'}
+  return { type: 'LEADER_BOARD_FETCH_START' }
 }
 
 function leaderBoardFetchDone(items) {
-   return { type: 'LEADER_BOARD_FETCH_DONE', items};
+  return { type: 'LEADER_BOARD_FETCH_DONE', items }
 }
 
 function leaderBoardFetchError(message) {
-   return { type: 'LEADER_BOARD_FETCH_ERROR', message};
+  return { type: 'LEADER_BOARD_FETCH_ERROR', message }
 }
 
 // click
 function teamClickStart(userSession, team) {
-   return { type: 'TEAM_CLICK_START', session: userSession, team}
+  return { type: 'TEAM_CLICK_START', session: userSession, team }
 }
 
 function teamClickDone(data) {
-   return { type: 'TEAM_CLICK_DONE', data};
+  return { type: 'TEAM_CLICK_DONE', data }
 }
 
 function teamClickError(message) {
-   return { type: 'TEAM_CLICK_ERROR', message};
+  return { type: 'TEAM_CLICK_ERROR', message }
 }

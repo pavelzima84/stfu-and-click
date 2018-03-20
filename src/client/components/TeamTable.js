@@ -8,11 +8,11 @@ export default class TeamTable extends React.Component {
     return (
       <table className="scoreBoard">
         <thead>
-            {this.renderHeader()}
-          </thead>
-          <tbody>
-            {this.props.teams.map(this.renderRow, this)}
-          </tbody>
+          {this.renderHeader()}
+        </thead>
+        <tbody>
+          {this.props.teams.map(this.renderRow, this)}
+        </tbody>
       </table>
     )
   }
@@ -29,7 +29,7 @@ export default class TeamTable extends React.Component {
 
   renderRow(item, index) {
     return (
-      <tr key={item.order} className={classNames({active: item.team === this.props.team})}>
+      <tr key={item.order} className={classNames({ active: item.team === this.props.team })}>
         <td>{item.order}</td>
         <td>{item.team}</td>
         <td>{item.clicks}</td>
@@ -38,10 +38,7 @@ export default class TeamTable extends React.Component {
   }
 }
 
-// TeamTable.defaultProps = {
-//   teams: []
-// }
-
 TeamTable.propTypes = {
-    teams: PropTypes.array.isRequired
+  teams: PropTypes.array.isRequired,
+  team: PropTypes.string
 }

@@ -6,7 +6,6 @@ import TeamTable from '../components/TeamTable'
 import TeamAddClickForm from '../components/TeamAddClickForm'
 
 export default class LeaderBoardMain extends React.Component {
-
   render() {
     return (
       <div>
@@ -20,7 +19,7 @@ export default class LeaderBoardMain extends React.Component {
           <TeamAddClickForm click={this.props.click} />
 
           <h2>TOP 10 Clickers</h2>
-         
+
           <TeamTable teams={this.getTeams()} />
 
           <p>Want to be top? STFU and click!</p>
@@ -35,6 +34,6 @@ export default class LeaderBoardMain extends React.Component {
 }
 
 LeaderBoardMain.propTypes = {
-    teams: PropTypes.array.isRequired,
-    click: PropTypes.func.isRequired
+  teams: PropTypes.array.isRequired,
+  click: PropTypes.func.isRequired
 }

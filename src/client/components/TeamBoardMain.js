@@ -36,7 +36,7 @@ export default class TeamBoardMain extends React.Component {
 
   getTeams() {
     let currentTeamIndex = this.props.teams.findIndex((item => item.team === this.props.team)),
-      min = (currentTeamIndex -3 > 0) ? currentTeamIndex -3 : 0,
+      min = (currentTeamIndex - 3 > 0) ? currentTeamIndex - 3 : 0,
       max = currentTeamIndex + 3
 
     return this.props.teams.slice(min, max + 1)
@@ -47,5 +47,6 @@ TeamBoardMain.propTypes = {
   teams: PropTypes.array.isRequired,
   team: PropTypes.string.isRequired,
   your_clicks: PropTypes.number,
-    team_clicks: PropTypes.number
+  team_clicks: PropTypes.number,
+  click: PropTypes.fnc.isRequired
 }
