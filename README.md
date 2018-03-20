@@ -1,4 +1,4 @@
-# reactExample
+# stfu-and-click
 
 Dev-stack is based on https://github.com/tajo/devstack.git.
 
