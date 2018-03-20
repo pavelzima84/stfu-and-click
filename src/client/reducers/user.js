@@ -1,18 +1,18 @@
-import { createSession } from '../utils/session' 
+import { createSession } from '../utils/session'
 
 const initialState = {
   session: null
 }
 
-export default function user(state = initialState, action) {    
-    switch (action.type) {
-        case 'INIT_SESSION':
-        	if (state.session) {
-        		throw 'Init session was called more times!'
-        	}
+export default function user(state = initialState, action) {
+  switch (action.type) {
+    case 'INIT_SESSION':
+      if (state.session) {
+        throw new Error('Init session was called more times!')
+      }
 
-            return Object.assign({}, state, {session: createSession()})
-    }
+      return Object.assign({}, state, { session: createSession() })
+  }
 
-    return state
+  return state
 }

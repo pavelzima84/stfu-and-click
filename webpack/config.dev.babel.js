@@ -21,7 +21,7 @@ export default {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        plugins: ['transform-runtime'/*, 'babel-plugin-transform-class-properties'*/],
+        plugins: ['transform-runtime'],
         presets: ['es2015', 'react', 'stage-3'],
       },
     }, {

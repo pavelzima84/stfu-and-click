@@ -2,16 +2,16 @@ import React from 'react'
 import { browserHistory, Router } from 'react-router-3'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import indexReducers from './reducers/index'
 
 import routes from './routes'
 
 const reducers = {
-	...indexReducers,
-	routing: routerReducer
+  ...indexReducers,
+  routing: routerReducer
 }
 
 const composeEnhancers = composeWithDevTools({
@@ -26,14 +26,14 @@ const store = createStore(
 )
 
 // Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store)
-export default class Main extends React.Component {
+syncHistoryWithStore(browserHistory, store)
 
+export default class Main extends React.Component {
   render() {
-  	return (
+    return (
       <Provider store={store}>
-        <Router history={browserHistory} routes={routes}/>
+        <Router history={browserHistory} routes={routes} />
       </Provider>
-	  )
+    )
   }
 }

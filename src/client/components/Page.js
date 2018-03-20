@@ -7,21 +7,21 @@ import { Link } from 'react-router-3';
 export default class Page extends React.Component {
 
   render() {
-  	return (
-  		<div>
-          <header>
-              <h1><Link to="/">stfuandclick.com</Link></h1>
-          </header>
-	        
-	        <main>
-            {this.props.main || <Loading />}
-          </main>
+    return (
+      <div>
+      <header>
+        <h1><Link to="/">stfuandclick.com</Link></h1>
+      </header>
+     
+      <main>
+      {this.props.main || <Loading />}
+      </main>
 
-          <footer>
-            <p>If you don't like this page, it's&nbsp;<a href="https://applifting.cz" target="_blank">Applifting</a>'s fault</p>
-          </footer>
-      </div>
-    )
+      <footer>
+      <p>If you don't like this page, it's&nbsp;<a href="https://applifting.cz" target="_blank">Applifting</a>'s fault</p>
+      </footer>
+    </div>
+  )
   }
 }
 

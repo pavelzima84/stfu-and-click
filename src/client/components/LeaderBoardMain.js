@@ -7,34 +7,34 @@ import TeamAddClickForm from '../components/TeamAddClickForm'
 
 export default class LeaderBoardMain extends React.Component {
 
-	render() {
-		return (
-		    <div>
-		        <p className="slogan">
-		        	"It's really simple, you just need to click as fast as you can."
-		        	<br />
-					<span className="anonymous">- anonymous</span>
-				</p>
+  render() {
+    return (
+      <div>
+        <p className="slogan">
+          "It's really simple, you just need to click as fast as you can."
+          <br />
+          <span className="anonymous">- anonymous</span>
+        </p>
 
-				<div className="content">
-			        <TeamAddClickForm click={this.props.click} />
+        <div className="content">
+          <TeamAddClickForm click={this.props.click} />
 
-			        <h2>TOP 10 Clickers</h2>
-			    	
-			        <TeamTable teams={this.getTeams()} />
+          <h2>TOP 10 Clickers</h2>
+         
+          <TeamTable teams={this.getTeams()} />
 
-			        <p>Want to be top? STFU and click!</p>
-				</div>
-		    </div>
-		)
-	}
+          <p>Want to be top? STFU and click!</p>
+        </div>
+      </div>
+    )
+  }
 
-	getTeams() {
-		return this.props.teams.slice(0, 10)
-	}
+  getTeams() {
+    return this.props.teams.slice(0, 10)
+  }
 }
 
 LeaderBoardMain.propTypes = {
-  	teams: PropTypes.array.isRequired,
-  	click: PropTypes.func.isRequired
+    teams: PropTypes.array.isRequired,
+    click: PropTypes.func.isRequired
 }

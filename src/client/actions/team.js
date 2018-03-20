@@ -1,35 +1,35 @@
 import {fetchLeaderBoard, sendClick} from '../utils/agent'
 
 export function asycFetchLeaderBoard(dispatch) {
-    return new Promise((resolve, reject) => {
-        dispatch(leaderBoardFetchStart())
+  return new Promise((resolve, reject) => {
+    dispatch(leaderBoardFetchStart())
 
-        fetchLeaderBoard()
-          .then((response) => {
-              dispatch(leaderBoardFetchDone(response.data))
-              resolve(response.data)
-          })
-          .catch((response) => {
-              dispatch(leaderBoardFetchError(response))
-              reject(response)
-          })
-    })
+    fetchLeaderBoard()
+      .then((response) => {
+        dispatch(leaderBoardFetchDone(response.data))
+        resolve(response.data)
+      })
+      .catch((response) => {
+        dispatch(leaderBoardFetchError(response))
+        reject(response)
+      })
+  })
 }
 
 export function asycClick(dispatch, userSession, team) {
-    return new Promise((resolve, reject) => {
-        dispatch(teamClickStart(userSession, team))
+  return new Promise((resolve, reject) => {
+    dispatch(teamClickStart(userSession, team))
 
-        sendClick(userSession, team)
-          .then((response) => {
-              dispatch(teamClickDone(response.data))
-              resolve(response.data)
-          })
-          .catch((response) => {
-              dispatch(teamClickError(response))
-              reject(response)
-          })
-    })
+    sendClick(userSession, team)
+      .then((response) => {
+        dispatch(teamClickDone(response.data))
+        resolve(response.data)
+      })
+      .catch((response) => {
+        dispatch(teamClickError(response))
+        reject(response)
+      })
+  })
 }
 
 // fetching

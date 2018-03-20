@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactDOM  from 'react-dom'
+import ReactDOM from 'react-dom'
 import Main from './main'
 
 const rootEl = document.getElementById('app-root');
 // const bodyEl = document.body
-ReactDOM.render(<Main />, rootEl);
+ReactDOM.render(<Main />, rootEl)
 
 if (module.hot) {
   module.hot.accept('./main', () => {
-    const NextApp = require('./main').default; // eslint-disable-line
-    ReactDOM.render(<NextApp />, rootEl);
-  });
+    const NextApp = require('./main').default // eslint-disable-line
+    ReactDOM.render(<NextApp />, rootEl)
+  })
 }
