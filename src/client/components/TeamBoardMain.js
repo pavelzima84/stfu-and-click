@@ -48,5 +48,5 @@ TeamBoardMain.propTypes = {
   team: PropTypes.string.isRequired,
   your_clicks: PropTypes.number,
   team_clicks: PropTypes.number,
-  click: PropTypes.fnc.isRequired
+  click: PropTypes.func.isRequired
 }
