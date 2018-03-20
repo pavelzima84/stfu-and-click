@@ -11,7 +11,7 @@ The devstack is based on https://github.com/tajo/devstack.git.
 
 ```shell
 git clone https://github.com/pavelzima84/stfu-and-click
-cd devstack
+cd stfu-and-click
 npm install // or yarn install
 ```
 
