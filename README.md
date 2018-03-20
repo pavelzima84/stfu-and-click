@@ -21,6 +21,7 @@ open http://localhost:8000
 ## Missing stuff
  - eslint
  - css
+ - TypeScript
  - mongodb to data persist
  - Immutable.js
  - tests
