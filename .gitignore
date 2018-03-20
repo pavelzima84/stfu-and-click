@@ -5,3 +5,4 @@ npm-debug.log
 build
 devstack.sublime-project
 devstack.sublime-workspace
+yarn.lock

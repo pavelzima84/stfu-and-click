@@ -1,10 +1,9 @@
 import React from 'react'
-import { browserHistory, Router, IndexRoute, Route } from 'react-router'
+import { browserHistory, Router } from 'react-router-3'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
-
 
 import indexReducers from './reducers/index'
 

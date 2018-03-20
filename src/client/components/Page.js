@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Loading from '../components/Loading'
-import { Link } from 'react-router';
+import { Link } from 'react-router-3';
 
 export default class Page extends React.Component {
 
