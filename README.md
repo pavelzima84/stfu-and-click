@@ -10,7 +10,7 @@ The devstack is based on https://github.com/tajo/devstack.git.
 ## Download
 
 ```shell
-git clone https://github.com/tajo/devstack.git
+git clone https://github.com/pavelzima84/stfu-and-click
 cd devstack
 npm install // or yarn install
 ```
@@ -22,7 +22,7 @@ npm start
 open http://localhost:8000
 ```
 
-## Production mode (not tested)
+## Production mode (not tested yet)
 
 ```shell
 npm run build
