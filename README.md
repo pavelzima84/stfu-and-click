@@ -38,7 +38,7 @@ npm run lint
 
 ## Missing stuff
  - ~~yarn~~
- - eslint
+ - ~~eslint~~
  - css
  - TypeScript
  - persisting using mongodb
