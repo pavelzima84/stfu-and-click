@@ -39,7 +39,7 @@ npm run lint
 ## Missing stuff
  - ~~yarn~~
  - ~~eslint~~
- - css
+ - ~~css (sass)~~
  - TypeScript
  - persisting using mongodb
  - Immutable.js

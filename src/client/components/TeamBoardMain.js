@@ -21,7 +21,8 @@ export default class TeamBoardMain extends React.Component {
         <div className="content">
           <button
             onClick={(e) => this.props.click()}
-            className="btn btn-primary btn-block">
+            className="btn btn-primary btn-block"
+          >
             CLICK!
           </button>
 
