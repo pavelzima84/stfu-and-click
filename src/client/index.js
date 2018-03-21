@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Main from './main'
 
+import './main.sass'
+
 const rootEl = document.getElementById('app-root');
 // const bodyEl = document.body
 ReactDOM.render(<Main />, rootEl)

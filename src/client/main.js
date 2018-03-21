@@ -6,7 +6,6 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import indexReducers from './reducers/index'
-
 import routes from './routes'
 
 const reducers = {

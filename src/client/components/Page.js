@@ -13,12 +13,12 @@ export default class Page extends React.Component {
           <h1><Link to="/">stfuandclick.com</Link></h1>
         </header>
 
-        <main>
+        <main className="container">
         {this.props.main || <Loading />}
         </main>
 
         <footer>
-          <p>If you don't like this page, it's&nbsp;<a href="https://applifting.cz" target="_blank">Applifting</a>'s fault</p>
+          <span>If you don't like this page, it's&nbsp;<a href="https://applifting.cz" target="_blank">Applifting</a>'s fault</span>
         </footer>
       </div>
     )
@@ -26,5 +26,5 @@ export default class Page extends React.Component {
 }
 
 Page.propTypes = {
-  main: PropTypes.func
+  main: PropTypes.object
 }

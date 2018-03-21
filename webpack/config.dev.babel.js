@@ -25,8 +25,8 @@ export default {
         presets: ['es2015', 'react', 'stage-3'],
       },
     }, {
-      test: /\.less$/,
-      loader: 'style-loader!css-loader!less-loader',
+      test: /\.sass$/,
+      loader: 'style-loader!css-loader!sass-loader',
     }],
   },
   output: {

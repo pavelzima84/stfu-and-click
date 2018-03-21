@@ -5,13 +5,13 @@ export default class TeamAddClickForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)} ref="form">
+      <form onSubmit={(e) => this.handleSubmit(e)} ref="form" className="teamAddClickForm clearfix">
         <label>
           <span>Enter your team name:</span>
-          <input name="team" ref="team" />
+          <input type="text" name="team" ref="team" placeholder="Your mom" className="form-control" />
         </label>
 
-        <button>CLICK!</button>
+        <button className="btn btn-primary btn-block">CLICK!</button>
       </form>
     )
   }

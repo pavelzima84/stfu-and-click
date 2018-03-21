@@ -6,7 +6,7 @@ export default class TeamTable extends React.Component {
 
   render() {
     return (
-      <table className="scoreBoard">
+      <table className="scoreBoard table">
         <thead>
           {this.renderHeader()}
         </thead>
