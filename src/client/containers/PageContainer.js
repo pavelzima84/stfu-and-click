@@ -3,9 +3,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { initSession } from '../actions/user'
+import { setSession } from '../actions/user'
 import Loading from '../components/Loading'
 import Page from '../components/Page'
+import { createSession } from '../utils/session'
 
 /**
  * This contains the whole Page. There are three parts - <header>, <main>, <footer>.
@@ -21,7 +22,7 @@ class PageContainer extends React.Component {
 
   componentDidMount() {
     if (!this.props.session) {
-      this.props.initSession()
+      this.props.setSession()
     }
   }
 
@@ -40,8 +41,9 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  initSession: () => {
-    dispatch(initSession())
+  setSession: () => {
+    const session = createSession()
+    dispatch(setSession(session))
   }
 })
 

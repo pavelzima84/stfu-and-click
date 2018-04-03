@@ -1,33 +1,20 @@
+import { handleActions } from 'redux-actions'
+
 const initialState = {
-  state: 'init',
-  your_clicks: null,
-  team_clicks: null,
+  status: 'init',
   error: null
 }
 
-export default function team(state = initialState, action) {
-  switch (action.type) {
-    case 'TEAM_CLICK_START':
-      return Object.assign({}, state, {
-        state: 'start',
-        // your_clicks: [],
-        // team_clicks: [],
-        message: null
-      })
-    case 'TEAM_CLICK_DONE':
-      return Object.assign({}, state, {
-        state: 'done',
-        ...action.data,
-        message: null
-      })
-    case 'TEAM_CLICK_ERROR':
-      return Object.assign({}, state, {
-        state: 'error',
-        // your_clicks: [],
-        // team_clicks: [],
-        error: action.message
-      })
-  }
+export default handleActions({
+  // SET_SESSION: (state, action) => initialState,
 
-  return state
-}
+  CLICK_TEAM_START: (state, action) => ({
+    ...state, status: 'start', error: null
+  }),
+  CLICK_TEAM_DONE: (state, action) => ({
+    ...state, status: 'done', ...action.payload, error: null
+  }),
+  CLICK_TEAM_ERROR: (state, action) => ({
+    ...state, status: 'error', error: action.payload
+  }),
+}, initialState)

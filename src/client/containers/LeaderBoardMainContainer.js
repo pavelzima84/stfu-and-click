@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { asycFetchLeaderBoard } from '../actions/team'
+import { fetchLeaderBoard, clickTeam, goToTeam } from '../actions/team'
 import LeaderBoardMain from '../components/LeaderBoardMain'
 
 /**
@@ -16,18 +16,20 @@ import LeaderBoardMain from '../components/LeaderBoardMain'
 class LeaderBoardMainContainer extends React.Component {
 
   componentDidMount() {
-    this.props.loadLeaderBoard()
-      .then((teams) => {})
-      .catch((reason) => {
-        // TODO: is missing
-        // debugger
-      })
+    this.props.loadLeaderBoard(this.props.session)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.session != nextProps.session) {
+      this.props.loadLeaderBoard(nextProps.session)
+    }
   }
 
   render() {
     return <LeaderBoardMain
       teams={this.props.items}
       click={(team) => this.props.click(this.props.session, team)}
+      select={(team) => this.props.select(team)}
     />
   }
 }
@@ -38,9 +40,18 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  loadLeaderBoard: () => asycFetchLeaderBoard(dispatch),
+  loadLeaderBoard: (session) => dispatch(fetchLeaderBoard({ session })),
   click: (session, team) => {
-    dispatch(push(`/${team}`))
+    dispatch(clickTeam({ session, team }))
+      .then(() => {
+        dispatch(goToTeam(team))
+      })
+      // .catch((response) => {
+      //  TODO: is missing
+      // })
+  },
+  select: (team) => {
+    dispatch(goToTeam(team))
   }
 })
 

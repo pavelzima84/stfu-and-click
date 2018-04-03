@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 initApiRouters(app)
 
-// send fat client HTML
+// send HTML of fat client
 app.get(/^\/(?!api).*/, (req, res) => {
   res.send(`<!DOCTYPE html>${ReactDOMServer.renderToStaticMarkup(<Html />)}`)
 });

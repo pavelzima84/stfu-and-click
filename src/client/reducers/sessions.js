@@ -9,13 +9,13 @@ const initialState = {
 export default handleActions({
   // SET_SESSION: (state, action) => initialState,
 
-  FETCH_LEADER_BOARD_START: (state, action) => ({
+  FETCH_SESSIONS_START: (state, action) => ({
     ...state, status: 'loading', message: null
   }),
-  FETCH_LEADER_BOARD_DONE: (state, action) => ({
+  FETCH_SESSIONS_DONE: (state, action) => ({
     ...state, status: 'ready', items: action.payload, message: null
   }),
-  FETCH_LEADER_BOARD_ERROR: (state, action) => ({
+  FETCH_SESSIONS_ERROR: (state, action) => ({
     ...state, status: 'error', message: action.payload
   })
 }, initialState)

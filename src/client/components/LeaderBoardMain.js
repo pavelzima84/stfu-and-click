@@ -19,7 +19,7 @@ export default class LeaderBoardMain extends React.Component {
         </div>
 
         <div className="content">
-          <TeamAddClickForm click={this.props.click} />
+          <TeamAddClickForm click={(team) => this.props.click(team)} />
 
           <div className="ribbonWrapper">
             <div className="ribbon">
@@ -29,7 +29,7 @@ export default class LeaderBoardMain extends React.Component {
             </div>
           </div>
 
-          <TeamTable teams={this.getTeams()} />
+          <TeamTable teams={this.getTeams()} select={(team) => this.props.select(team)}/>
 
           <ChallengeText />
         </div>
@@ -44,5 +44,6 @@ export default class LeaderBoardMain extends React.Component {
 
 LeaderBoardMain.propTypes = {
   teams: PropTypes.array.isRequired,
-  click: PropTypes.func.isRequired
+  click: PropTypes.func.isRequired,
+  select: PropTypes.func.isRequired
 }

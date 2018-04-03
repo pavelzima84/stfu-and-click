@@ -9,20 +9,42 @@ export function initApiRouters(app) {
     next()
   })
 
-  app.get('/api/v1/leaderboard', (req, res) => {
-    res.json(TeamService.getLeaderBoard())
+  app.get('/api/v1/user/sessionList', (req, res) => {
+    const teams = TeamService.getLeaderBoard(),
+      sessions = _.flatten(_.map(teams, team => _.pluck(team.clicks, 'session'))),
+      uniqueSessions = Array.from(new Set(sessions))
+
+    res.json(uniqueSessions)
   })
 
-  app.post('/api/v1/click', (req, res) => {
+  app.get('/api/v1/team/leaderboard', (req, res) => {
+    const session = req.query.session,
+      teams = TeamService.getLeaderBoard(session)
+
+    res.json(TeamService.adaptTeams(teams, { session }))
+  })
+
+
+
+
+  // app.get('/api/v1/team/:title', (req, res, next) => {
+  //   if (req.params.title === 'leaderboard') {
+  //     next()
+  //   } else {
+  //     res.json(TeamService.getTeam(req.query.session, req.params.title))
+  //   }
+  // })
+
+  app.post('/api/v1/team/:title/click', (req, res) => {
     let now = new Date().getTime(),
-      title = req.body.team,
-      session = req.body.session,
+      title = req.params.title,
+      session = req.query.session,
       currentTeam,
-      yourClicks,
+      myClicks,
       invalidParams
 
     // validate request params
-    invalidParams = validateClick(session, title)
+    invalidParams = validateAddClick(session, title)
     if (!_.isEmpty(invalidParams)) {
       res.status(500).send({
         message: 'Invalid params',
@@ -31,20 +53,20 @@ export function initApiRouters(app) {
     }
 
     // add clict
-    currentTeam = getOrCreateTeam(title, now)
+    currentTeam = getOrCreateTeam(session, title, now)
     TeamService.addClick(session, currentTeam, now)
 
     // response preparing
-    yourClicks = _.filter(currentTeam.clicks, clickItem => clickItem.session === session)
+    myClicks = _.filter(currentTeam.clicks, clickItem => clickItem.session === session)
 
     res.json({
-      your_clicks: yourClicks.length,
-      team_clicks: currentTeam.clicks.length
+      myClicks: myClicks.length,
+      teamClicks: currentTeam.clicks.length
     })
   })
 }
 
-function validateClick(session, title) {
+function validateAddClick(session, title) {
   let invalidParams = {}
   if (typeof session !== 'string' || session.length === 0) {
     invalidParams.session = 'Empty or missing `session` param!'
@@ -57,22 +79,22 @@ function validateClick(session, title) {
   return invalidParams
 }
 
-function getOrCreateTeam(title, now) {
+function getOrCreateTeam(session, title, now) {
   // find already created team by title
-  let currentTeam = TeamService.findTeam(title),
-    teamToCreate
+  let currentTeam = TeamService.findTeamByTitle(session, title),
+    teamToCreate,
+    createdTeamId
 
   // create new one team in the case of missing
   if (!currentTeam) {
     teamToCreate = {
       title,
       created: now,
-      clicks: []
+      clicks: [],
+      session
     }
 
-    TeamService.createTeam(teamToCreate)
-
-    currentTeam = teamToCreate
+    currentTeam = TeamService.createTeam(teamToCreate)
   }
 
   return currentTeam

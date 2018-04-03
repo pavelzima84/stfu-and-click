@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Loading from '../components/Loading'
 import { Link } from 'react-router-3';
+
+import SessionSelectionContainer from '../containers/SessionSelectionContainer'
+
 
 export default class Page extends React.Component {
 
@@ -11,10 +13,12 @@ export default class Page extends React.Component {
       <div>
         <header>
           <h1><Link to="/">stfuandclick.com</Link></h1>
+
+          <SessionSelectionContainer />
         </header>
 
         <main className="container">
-        {this.props.main || <Loading />}
+          {this.props.main}
         </main>
 
         <footer>
@@ -26,5 +30,5 @@ export default class Page extends React.Component {
 }
 
 Page.propTypes = {
-  main: PropTypes.object
+  main: PropTypes.object.isRequired
 }

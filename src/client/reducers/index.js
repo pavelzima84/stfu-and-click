@@ -1,6 +1,7 @@
 import user from './user'
 import team from './team'
 import teams from './teams'
+import sessions from './sessions'
 
 // The reducer’s responsibility is to take the application state,
 // account for changes coming from the action creators,
@@ -11,5 +12,6 @@ import teams from './teams'
 export default {
   user,
   team,
-  teams
+  teams,
+  sessions
 }

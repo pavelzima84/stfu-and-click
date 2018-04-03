@@ -23,10 +23,10 @@ export default class TeamAddClickForm extends React.Component {
     e.preventDefault() // do not send the form to process
 
     let team = this.refs.team.value
-    if (team.length > 0) {
-      this.props.click(team);
-    } else {
+    if (team.length === 0) {
       this.refs.team.focus()
+    } else {
+      this.props.click(team)
     }
   }
 }
